@@ -1,0 +1,74 @@
+\n表示一个字符，有换行的意思。
+@autoreleasepool{}之间的叫做自动释放池，在应用创建对象的时候，系统能有效的管理应用所使用的内存。
+@"some words"--》常量NSString对象。
+
+[类的名称或者类的实例（也叫做接收者） 方法（发送一条消息）]；
+[receiver message];
+请求一个类或者实例来执行某个操作的时候其实就是在向他发送一条消息，消息的接收者称之为接收者。
+
+.h的@interface部分定义该头文件的父类,用于描述类和类的方法：@interface 类：NSObject
+方法定义：-(void)setNumber:(int)n;
+.m的@implementation部分，实现头文件的方法和存储的数据。
+{int number;}
+-(void)setNumber:(int)n{number = n;}
+main.m部分：
+类 *实例 = [[类 alloc] init];
+[实例 setNumber];
+Fraction *myFraction中的*  表示myFraction是Fraction对象的引用（或者指针），myFraction并不存储数据，只是存储了一个引用（其实是内存地址），表明了对象数据在内存中的位置。
+
+方法的分类：类方法和实例方法
+类方法以（+）开头，是对类本身执行某些操作的方法，例如对类进行初始化。
+实例方法以（-）开头，对类的实例进行一些操作。
+
+方法的参数：-（void）setNumber:(int) n;
+
+设置方法和取之方法通常称为访问器方法.
+Fraction *myFraction = [Fraction new];
+等价于
+Fraction *myFraction = [[Fraction alloc] init];
+
+第四章:
+数据类型:int,float,double(范围是float的两倍)w,char.
+oc中,任何数字,单个字符或者字符串都被称作为常量.
+58(常量整数值),@"hello world"(常量字符串对象),@58(常量数字对象)
+
+%i --> int;%2i --> 表示显示整数的同时还会占用显示器的两列；%f --> float,%e --> double,%c --> char(\n也是个char类型，虽然有两个字符)
+限定词：long(%1i),long long,short,unsigned(正数)和signed
+%u --> unsignede int;(P57 第六版)；%p --> id;
+BOOL 类型
+类型转换：
+int i1=1;
+(float)i1
+id类型的强制转换
+id myNumber; Fraction *myNumber; myFraction = (Fraction *) myNumber;
+id类型，可以存储任何类型的对象。
+
+条件运算符：s = (x < 0) ? -1 : x * x;
+
+@interface部分：
+@interface NewClassesName : ParentClassName
+开头的符号（-）表示该方法是一个实例方法
+正号（+）表示该方法是一个类方法
+返回值：
+-（int）currentAge;笔记
+
+方法的参数：
+-(void) setNumber: (int) n;
+
+@implementation部分
+@implementation NewClassName
+{
+可以在这里初始化变量
+}
+
+oc中存在new
+[[类 alloc] init] == [类 new]
+访问属性的方法：[myFraction numeractor] myFraction.numerctor
+赋值方法：[myFraction setNumeractor:1] myFraction.numeractor = 1;
+
+@synthesize numerator,denominator; 合成，有了这个就可以在.m中直接使用numerator，而不用self.numerator。
+
+静态变量：
+static int a = 1;
+
+[self reduce]调用
