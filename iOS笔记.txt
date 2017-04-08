@@ -58,6 +58,8 @@ Fraction *myFraction = [Fraction new];
 等价于
 Fraction *myFraction = [[Fraction alloc] init];
 
+
+
 第四章:数据类型和表达式
 数据类型:int,float,double(范围是float的两倍)w,char.
 oc中,任何数字,单个字符或者字符串都被称作为常量.
@@ -70,7 +72,7 @@ long long int(double)表示更大范围的int(double)变量;
 %u,%x,%o --> unsigned int a 表示变量a只用来保存正直.
 id类型:id数据类型可以存储任何类型的对象.id what; id类型是多态和动态绑定的基础.
 %p --> id;
-算数表达式:条件运算符：s = (x < 0) ? -1 : x * x;
+算数表达式:
 
 类型转换：
 int i1=1;(float)i1
@@ -80,3 +82,14 @@ id类型，可以存储任何类型的对象。
 
 
 第五章:循环结构
+for(n = 1;n <= 200; n = n+1){}
+while(count <= 5){}
+do{}while();
+break;continue;
+
+第六章 选择结构
+if(){} else if(){} else{}
+switch(){case 'char':...break;default:...break;}
+条件运算符：条件运算符：s = (x < 0) ? -1 : x * x;
+
+第七章 类
