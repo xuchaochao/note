@@ -131,3 +131,10 @@ switch(){case 'char':...break;default:...break;}
 -(int)showPage{ static int pangeCount = 0; ++pageCount; return pageCount; }
 pageCount成为局部静态变量之后，可以得到所有对象调用了showPage的次数；
 pageCount如果不是局部静态变量，而移出方法体外，成为一个实例变量，那么pageCount可以计算出每个对象调用的showPage的次数。
+
+7.6 self关键字
+self用来指明对象(这个对象指的就是调用该方法的对象,对象又是由类产生的)是当前方法的接收者.
+[self reduce]
+关于self,在[aFraction add: bFraction];中的add方法里调用了reduce方法:[self reduce],那么self指的就是aFraction,self作为aFraction的引用.
+
+7.7 在方法中分配和返回对象
