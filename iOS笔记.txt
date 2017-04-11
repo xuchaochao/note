@@ -3,7 +3,7 @@
 
 @interface部分：
 @interface NewClassesName : ParentClassName
-开头的符号（-）表示该方法是一个实例方法
+开头的符号 （-） 表示该方法是一个实例方法
 正号（+）表示该方法是一个类方法
 返回值：
 -（int）currentAge;笔记
@@ -37,11 +37,11 @@ static int a = 1;
 [receiver message];
 请求一个类或者实例来执行某个操作的时候其实就是在向他发送一条消息，消息的接收者称之为接收者。
 
-.h的@interface部分定义该头文件的父类,用于描述类和类的方法：@interface 类：NSObject
+.h的 @interface 部分定义该头文件的父类,用于描述类和类的方法：@interface 类：NSObject
 方法定义：-(void)setNumber:(int)n;
-.m的@implementation部分，实现头文件的方法和存储的数据。
-{int number;}
--(void)setNumber:(int)n{number = n;}
+.m的@ implementation部分，实现头文件的方法和存储的数据。
+{int number ; }
+-(void) setNumber : (int) n { number = n ; }
 main.m部分：
 类 *实例 = [[类 alloc] init];
 [实例 setNumber];
@@ -93,3 +93,41 @@ switch(){case 'char':...break;default:...break;}
 条件运算符：条件运算符：s = (x < 0) ? -1 : x * x;
 
 第七章 类
+
+7.1分离接口和实现文件：
+7.1.1：
+类的声明放在放在class.h文件中，包含类的公开信息；类的定义放在class.m文件中,包含的是私有信息也就是实例变量和代码。
+7.1.2：
+导入文件时候，系统文件用<>，例如#import <Foundation/Foundation.h>;
+自己创建的文件用双引号""，例如#import "Fraction.h".
+
+7.2合成存取方法
+7.2.1：
+自动生成设置方法和取值方法：1.在接口部分使用@property int numerator,denominator;2.在实现文件中@synthesize numerator,denominator;,
+7.2.2：
+不用@synthesize指令，只使用@property指令编译器就会自动生成setter和getter方法，但是编译器自动生成的方法会以下划线_作为其名称的第一个字符。
+
+7.3使用点运算符访问属性
+[myFraction numerator] 或者 myFraction.numerator 得到该属性的值；
+[myFraction setNumerator: 1] 或者 myFraction.numerator = 1 设置该属性的值；
+
+7.4具有多个参数的方法
+7.4.0:
+具有多个参数的方法在头文件中-(void) setTo:(int) n over:(int)d;
+在实现文件中：-(void)setTo:(int) n over: (int) d{ numerator = n; denominator = d; }
+主程序中：[myFraction setTo: 1 over: 3];
+7.4.1:
+不带参数名的方法：-(int) set : (int) n (int) d; [aFraction set :1 :3];
+但是不推荐使用，因为不易懂且不直观。
+7.4.2：参数为引用时：
+-（void） add：(Fraction *) f{ n = n*f.d + d*f.n; d = d*f.d};
+使用：[aFraction add : bFraction];
+
+7.5局部变量
+7.5.0 局部变量使用前需要先赋值。
+7.5.1 方法的参数也是局部变量，当传递一个对象作为参数时，实际上传递的是一个数据存储位置的引用。
+7.5.2 static关键字可以让局部变量保留多次调用一个方法所得到的值。static int hitCount =0 ;
+使用示例：
+-(int)showPage{ static int pangeCount = 0; ++pageCount; return pageCount; }
+pageCount成为局部静态变量之后，可以得到所有对象调用了showPage的次数；
+pageCount如果不是局部静态变量，而移出方法体外，成为一个实例变量，那么pageCount可以计算出每个对象调用的showPage的次数。
